@@ -61,6 +61,7 @@ namespace BarbeShop.Controllers
             if (ModelState.IsValid)
             {
                 service.Id = Guid.NewGuid();
+                service.CreatedDate= DateTime.Now;
                 _context.Add(service);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -100,6 +101,7 @@ namespace BarbeShop.Controllers
             {
                 try
                 {
+                    service.ModifiedDate = DateTime.Now;
                     _context.Update(service);
                     await _context.SaveChangesAsync();
                 }
