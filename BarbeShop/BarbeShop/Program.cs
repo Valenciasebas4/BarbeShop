@@ -1,7 +1,24 @@
+using BarbeShop.DAL;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+
+
+// Conexión BD
+builder.Services.AddDbContext<DataBaseContext>(o =>
+{
+    o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
+
+
+
+
 
 var app = builder.Build();
 
